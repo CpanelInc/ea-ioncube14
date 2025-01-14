@@ -12,7 +12,7 @@ Vendor:  cPanel, Inc.
 Summary: v14 Loader for ionCube-encoded PHP files
 Version: 14.0.0
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4572 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -25,6 +25,7 @@ Source: ioncube_loaders_lin_x86-64.tar.gz
 
 Provides:      %{parent_prefix}ioncube = 14
 Conflicts:     %{parent_prefix}php-ioncube
+Conflicts:     %{?parent_prefix}ioncube
 
 # Don't provide extensions as shared library resources
 %{?filter_provides_in: %filter_provides_in %{php_extdir}/.*\.so$}
@@ -68,6 +69,9 @@ EOF
 %{php_extdir}/ioncube_loader_lin_%{php_version}.so
 
 %changelog
+* Mon Jan 06 2025 Chris Castillo <c.castillo@cpanel.net> - 14.0.0-2
+- ZC-12409: Fix conflicts with other ionCube versions.
+
 * Wed Sep 11 2024 Julian Brown <julian.brown@cpanel.net> - 14.0.0-1
 - ZC-12253: Initial Release
 
