@@ -71,6 +71,7 @@ EOF
 %changelog
 * Wed Feb 05 2025 Cory McIntire <cory.mcintire@webpros.com> - 14.4.0-1
 - EA-12675: Update ea-ioncube14 from v14.0.0 to v14.4.0
+- Full release of PHP 8.4 loaders that will run encoded files produced by the PHP 8.3 & 8.2 Encoders.
 
 * Mon Jan 06 2025 Chris Castillo <c.castillo@cpanel.net> - 14.0.0-2
 - ZC-12409: Fix conflicts with other ionCube versions.
