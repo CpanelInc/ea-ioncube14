@@ -12,7 +12,7 @@ Vendor:  cPanel, Inc.
 Summary: v14 Loader for ionCube-encoded PHP files
 Version: 14.4.0
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4572 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -69,6 +69,9 @@ EOF
 %{php_extdir}/ioncube_loader_lin_%{php_version}.so
 
 %changelog
+* Tue Feb 18 2025 Chris Castillo <chris.castillo@webpros.com> - 14.4.0-2
+- ZC-12574: Add PHP84 support
+
 * Wed Feb 05 2025 Cory McIntire <cory.mcintire@webpros.com> - 14.4.0-1
 - EA-12675: Update ea-ioncube14 from v14.0.0 to v14.4.0
 - Full release of PHP 8.4 loaders that will run encoded files produced by the PHP 8.3 & 8.2 Encoders.
