@@ -10,7 +10,7 @@
 Name:    %{parent_prefix}php-ioncube14
 Vendor:  cPanel, Inc.
 Summary: v14 Loader for ionCube-encoded PHP files
-Version: 15.0.0
+Version: 14.4.1
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4572 for more details
 %define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
@@ -69,9 +69,6 @@ EOF
 %{php_extdir}/ioncube_loader_lin_%{php_version}.so
 
 %changelog
-* Tue Oct 21 2025 Cory McIntire <cory.mcintire@webpros.com> - 15.0.0-1
-- EA-13225: Update ea-ioncube14 from v14.4.1 to v15.0.0
-
 * Wed May 21 2025 Cory McIntire <cory.mcintire@webpros.com> - 14.4.1-1
 - EA-12882: Update ea-ioncube14 from v14.4.0 to v14.4.1
 
