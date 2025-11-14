@@ -31,8 +31,13 @@ sub _get_required {
 
     my ( $version, $url ) = _scrape_page( 'Linux (64 bits)', $res->{content} );
 
+    # Ensure we only get version 14.x.x for ea-ioncube14
+    if ( $version !~ m/^14\./ ) {
+        die "Found version $version but this package (ea-ioncube14) only supports version 14.x.x\n";
+    }
+
     my $ridx = rindex( $url, '/' );
-    die "Unable to determine the tarball name from “$url”\n" if ( $ridx < 0 );
+    die "Unable to determine the tarball name from \"$url\"\n" if ( $ridx < 0 );
     my $name = substr( $url, $ridx + 1 );
 
     return ( $version, $url, $name );
