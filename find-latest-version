@@ -31,8 +31,18 @@ sub _get_required {
 
     my ( $version, $url ) = _scrape_page( 'Linux (64 bits)', $res->{content} );
 
+    # The ioncube download page may show a newer major version (e.g. 15.x)
+    # that belongs to ea-ioncube15. For this package we only track 14.x.x
+    # security/patch updates. If the page no longer offers 14.x, exit
+    # cleanly so the update watcher treats this as "current" rather than
+    # an error.
+    if ( $version !~ m/^14\./ ) {
+        warn "ioncube page shows v$version (belongs to ea-ioncube15); no 14.x update available\n";
+        exit 0;
+    }
+
     my $ridx = rindex( $url, '/' );
-    die "Unable to determine the tarball name from “$url”\n" if ( $ridx < 0 );
+    die "Unable to determine the tarball name from \"$url\"\n" if ( $ridx < 0 );
     my $name = substr( $url, $ridx + 1 );
 
     return ( $version, $url, $name );
